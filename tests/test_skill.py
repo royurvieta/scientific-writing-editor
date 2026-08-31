@@ -132,24 +132,22 @@ class PackageBuilderTests(unittest.TestCase):
     def setUpClass(cls) -> None:
         cls.builder = load_builder()
 
-    def test_builds_clean_codex_and_claude_archives(self) -> None:
+    def test_archive_has_single_top_level_skill_folder(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
-            codex_zip, claude_zip = self.builder.build_packages(Path(directory))
+            skill_zip = self.builder.build_packages(Path(directory))
+            self.assertEqual("scientific-writing-editor.zip", skill_zip.name)
 
-            with zipfile.ZipFile(codex_zip) as archive:
+            with zipfile.ZipFile(skill_zip) as archive:
                 names = archive.namelist()
                 self.assertIn("scientific-writing-editor/SKILL.md", names)
-                self.assertIn(
-                    "scientific-writing-editor/references/personal-voice.md", names
-                )
+                top_level = {name.split("/", 1)[0] for name in names}
+                self.assertEqual({"scientific-writing-editor"}, top_level)
+                for name in names:
+                    self.assertIn("/", name, f"file at archive root: {name}")
+                    self.assertTrue(
+                        name.startswith("scientific-writing-editor/"), name
+                    )
                 self.assertTrue(all("__pycache__" not in name and "/._" not in name for name in names))
-
-            with zipfile.ZipFile(claude_zip) as archive:
-                names = archive.namelist()
-                self.assertIn("SKILL.md", names)
-                self.assertIn("references/evaluation.md", names)
-                self.assertIn("references/personal-voice.md", names)
-                self.assertNotIn("scientific-writing-editor/SKILL.md", names)
 
 
 if __name__ == "__main__":

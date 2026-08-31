@@ -2,6 +2,10 @@
 
 Use these signals to edit or audit. They identify possible problems, not forbidden words. Scientific fidelity and the author's voice always take priority. For positive voice decisions, use [personal-voice.md](personal-voice.md).
 
+## Portability test
+
+A general heuristic that applies across all the patterns below: if a sentence could be moved to another study, manuscript, or product almost unchanged, it may be filler. Remove it, or make it specific using only information already present in the source. Never invent the missing detail.
+
 ## English patterns
 
 ### Empty openings

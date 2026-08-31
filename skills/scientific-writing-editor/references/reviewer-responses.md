@@ -39,6 +39,10 @@ When supported by the material:
 
 A short concern may need two sentences, not six sections.
 
+## Output format
+
+A point-by-point reply is continuous prose. Do not add headings, bullet lists, bold, or closing summaries unless the journal's response format requires them or the user asks. This is a format constraint, not a stylistic preference.
+
 ## Tone
 
 - Be cordial, direct, calm, and scientifically firm.

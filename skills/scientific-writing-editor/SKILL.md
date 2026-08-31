@@ -88,7 +88,7 @@ Identify the actual problem: ambiguity, excess wording, weak organization, artif
 
 ### 5. Remove empty AI-style patterns
 
-Read [references/anti-slop-bilingual.md](references/anti-slop-bilingual.md) when naturalness is part of the task. Treat every pattern as contextual, never as an automatic ban. Passive voice, contrast, repetition, technical terminology, and interpretive language may be necessary.
+Read [references/anti-slop-bilingual.md](references/anti-slop-bilingual.md) before any REWRITE or REVIEWER RESPONSE. Treat every pattern as contextual, never as an automatic ban. Passive voice, contrast, repetition, technical terminology, and interpretive language may be necessary.
 
 ### 6. Calibrate to personal voice and language
 
@@ -122,7 +122,7 @@ Return only the edited text by default. Provide a comparison, change summary, ev
 
 - [references/personal-voice.md](references/personal-voice.md): required for rewrites and reviewer responses.
 - [references/reviewer-responses.md](references/reviewer-responses.md): required for peer-review responses.
-- [references/anti-slop-bilingual.md](references/anti-slop-bilingual.md): required for AI-style audits or when naturalness is central.
+- [references/anti-slop-bilingual.md](references/anti-slop-bilingual.md): required for rewrites, reviewer responses, and AI-style audits.
 - [references/evaluation.md](references/evaluation.md): required after every rewrite.
 - [references/examples.md](references/examples.md): read when calibration or a difficult trade-off needs an example.
 - [references/test-cases.md](references/test-cases.md): use when modifying or evaluating this skill.
