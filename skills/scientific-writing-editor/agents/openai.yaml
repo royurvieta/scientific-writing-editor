@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scientific Writing Editor"
+  short_description: "Preserve science and the author's natural voice"
+  default_prompt: "Use $scientific-writing-editor to rewrite or audit this scientific text without changing its data, certainty, scope, interpretation, or authorial voice."
