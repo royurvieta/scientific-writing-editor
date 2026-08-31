@@ -159,31 +159,55 @@ The private ledger is not shown unless requested.
 
 ## Install
 
+Every target below uses the same required layout: one folder per skill, with `SKILL.md` at that folder's root.
+
 ### Skills CLI
 
 ```bash
 npx skills add royurvieta/scientific-writing-editor --skill scientific-writing-editor --global --yes
 ```
 
-### Codex: manual installation
+### Claude Code
+
+Personal scope (available in all your projects), from the release archive:
+
+```bash
+unzip scientific-writing-editor.zip -d ~/.claude/skills/
+```
+
+or from a clone:
+
+```bash
+git clone https://github.com/royurvieta/scientific-writing-editor.git
+cp -R scientific-writing-editor/skills/scientific-writing-editor ~/.claude/skills/
+```
+
+Project scope, inside a repository:
+
+```bash
+unzip scientific-writing-editor.zip -d .claude/skills/
+```
+
+The installed entrypoint should be `~/.claude/skills/scientific-writing-editor/SKILL.md` (personal) or `.claude/skills/scientific-writing-editor/SKILL.md` (project).
+
+### Codex
+
+Codex reads the same layout from `~/.codex/skills/`:
+
+```bash
+unzip scientific-writing-editor.zip -d ~/.codex/skills/
+```
+
+or from a clone:
 
 ```bash
 git clone https://github.com/royurvieta/scientific-writing-editor.git
 cp -R scientific-writing-editor/skills/scientific-writing-editor ~/.codex/skills/
 ```
 
-The installed entrypoint should be:
-
-```text
-~/.codex/skills/scientific-writing-editor/SKILL.md
-```
-
 ### Release archives
 
-The [latest release](https://github.com/royurvieta/scientific-writing-editor/releases/latest) includes:
-
-- `scientific-writing-editor-codex.zip`: contains the named skill folder expected by Codex-style installations;
-- `scientific-writing-editor-claude.zip`: places `SKILL.md` at the ZIP root for Claude-compatible packaging.
+The [latest release](https://github.com/royurvieta/scientific-writing-editor/releases/latest) ships a single archive, `scientific-writing-editor.zip`. It unpacks to that layout, so it installs into any agent that reads a skills directory: extract it into the agent's skills directory.
 
 ## Use
 
@@ -286,9 +310,10 @@ skills/scientific-writing-editor/
 ```bash
 python3 -m unittest discover -s tests -v
 python3 scripts/build_packages.py dist
-unzip -t dist/scientific-writing-editor-codex.zip
-unzip -t dist/scientific-writing-editor-claude.zip
+unzip -l dist/scientific-writing-editor.zip
 ```
+
+After building, check the `unzip -l` listing: every entry must sit under a single top-level `scientific-writing-editor/` folder, with `scientific-writing-editor/SKILL.md` present and nothing at the archive root. Any file listed without that prefix means the packaging is broken and the archive will not install.
 
 The automated tests cover public packaging, numerical inventory, value bindings, quote protection, and repository privacy markers. Behavioral cases separately evaluate scientific meaning and editorial judgment.
 
